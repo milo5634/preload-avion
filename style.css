@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.preload {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: #01519F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 15.5s ease;
+    /* transition: opacity 0.5s ease; necessaire pour le bon fonctionnement de la transition de preoad */
+    /* changer le temps permettra de raccourcir ou augmenter le temps d'apparition du preload */
+}
+
+.preload-finish {
+    /* permettra de cacher l'animation de preload */
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cloud1,
+.cloud2 {
+    height: 100px;
+    position: absolute;
+    right: 0%;
+    /* positionne totalement à droite */
+    z-index: -1;
+    /* permet de faire passer l'avion en premier plan */
+}
+
+.cloud1 {
+    top: 25%;
+    /* rapport à la position absolu */
+    transform: translate(100%, -25%);
+    /* positionnement sur l'axe X & Y par raport à leur position de départ*/
+    animation: clouds 3s ease infinite;
+    /* permet de créer le mouvement de l'animation */
+}
+
+.cloud2 {
+    top: 50%;
+    transform: translate(100%, -50%);
+    animation: clouds 3s ease infinite 2s;
+    /* rajouter un temps après infinite permet de créer un décalage par rapport aux autres élements  */
+}
+
+.avion {
+    height: 150px;
+    position: absolute;
+    left: 0%;
+    /* positionne totalement à droite */
+    z-index: -1;
+    /* permet de faire passer l'avion en premier plan */
+    top: 85%;
+    transform: translate(-100%, -85%);
+    animation: avion 5s ease infinite 1.5s;
+}
+
+.soleil {
+    height: 150px;
+    position: absolute;
+    top: 0%;
+    right: 1%;
+    transform: translate(-1%, 0%);
+    animation: soleil 1s ease infinite alternate;
+    /* permet de créer le mouvement de l'animation */
+    /* ajouter ALTERNATE permet de ne pas avoir un rythme cassé entre le FROM et le TO, permet de la fluidité */
+}
+
+.goku {
+    height: 200px;
+    animation: goku 1s ease infinite alternate;
+    /* permet de créer le mouvement de l'animation */
+    /* ajouter ALTERNATE permet de ne pas avoir un rythme cassé entre le FROM et le TO, permet de la fluidité */
+}
+
+.preload h3 {
+    position: absolute;
+    top: 75%;
+    transform: translateY(-75%);
+    color: white;
+    font-size: 30px;
+    font-family: sans-serif;
+}
+
+section img {
+    height: 200px;
+}
+
+@keyframes goku {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(50px);
+    }
+}
+
+@keyframes soleil {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes clouds {
+    from {
+        right: 0%;
+        /* départ du début de l'écran */
+    }
+    to {
+        right: 130%;
+        /* arrivé plus moin que la fin de l'écran permet d'avoir une fluidité */
+    }
+}
+
+@keyframes avion {
+    from {
+        left: 0%;
+        /* départ du début de l'écran */
+    }
+    to {
+        left: 130%;
+        /* arrivé plus moin que la fin de l'écran permet d'avoir une fluidité */
+    }
+}
